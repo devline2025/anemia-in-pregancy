@@ -18,7 +18,7 @@ imagePaths.forEach(path => {
   const img = document.createElement("img");
   img.src = path;
   img.alt = "補鐵圖示";
-  img.className = "w-[360px] h-[360px] object-contain rounded-lg shadow-lg";
+  img.className = "w-[360px] object-contain rounded-lg shadow-lg";
 
   wrapper.appendChild(img);
   slider.appendChild(wrapper);
