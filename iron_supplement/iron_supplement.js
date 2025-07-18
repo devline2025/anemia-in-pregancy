@@ -1,25 +1,49 @@
-const imagePaths = [
-  "image/suppl_1.jpg",
-  "image/suppl_2.jpg",
-  "image/suppl_3.jpg",
-  "image/suppl_4.jpg",
-  "image/suppl_5-1.jpg",
-  "image/suppl_5-2.jpg",
-  "image/suppl_6-1.jpg",
-  "image/suppl_6-2.jpg",
-];
+fetch("iron_supplement.json")
+  .then((res) => res.json())
+  .then((images) => {
+    const container = document.getElementById("imageSlider");
+    const dotsContainer = document.createElement("div");
+    dotsContainer.className = "flex justify-center mt-3 gap-1";
 
-const slider = document.getElementById("imageSlider");
+    const imageWrappers = [];
 
-imagePaths.forEach(path => {
-  const wrapper = document.createElement("div");
-  wrapper.className = "flex-shrink-0 snap-center flex justify-center items-center w-full";
+    images.forEach((src, index) => {
+      // 圖片外框
+      const wrapper = document.createElement("div");
+      wrapper.className =
+        "flex-shrink-0 snap-center rounded-xl shadow border border-pink-200 overflow-hidden";
+      wrapper.style.display = "inline-block";
 
-  const img = document.createElement("img");
-  img.src = path;
-  img.alt = "補鐵圖示";
-  img.className = "w-[360px] object-contain rounded-lg shadow-lg";
+      // 圖片本體
+      const img = document.createElement("img");
+      img.src = src;
+      img.alt = "";
+      img.className = "w-full max-w-[360px] rounded-xl shadow";
 
-  wrapper.appendChild(img);
-  slider.appendChild(wrapper);
-});
+      wrapper.appendChild(img);
+      container.appendChild(wrapper);
+      imageWrappers.push(wrapper);
+
+      // 導覽點
+      const dot = document.createElement("span");
+      dot.className =
+        "dot w-2 h-2 bg-black rounded-full transition-opacity duration-300";
+      dot.style.opacity = index === 0 ? "0.8" : "0.3";
+      dotsContainer.appendChild(dot);
+    });
+
+    // 插入導覽點（在圖片區下面）
+    container.parentElement.appendChild(dotsContainer);
+
+    // 滑動更新導覽點
+    container.addEventListener("scroll", () => {
+      const scrollLeft = container.scrollLeft;
+      const slideWidth = imageWrappers[0].offsetWidth + 16; // +gap-4 (16px)
+      const index = Math.round(scrollLeft / slideWidth);
+
+      const dots = dotsContainer.querySelectorAll(".dot");
+      dots.forEach((dot, i) => {
+        dot.style.opacity = i === index ? "0.8" : "0.3";
+      });
+    });
+  });
