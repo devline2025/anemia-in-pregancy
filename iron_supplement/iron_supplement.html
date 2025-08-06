@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>孕期大補帖</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="iron_supplement.css" />
   <style>
     .scroll-container::-webkit-scrollbar {
       display: none;
@@ -12,11 +13,11 @@
   </style>
 </head>
 
-<body style="background-color: #FFFFFF;" class="font-sans min-h-screen px-4 py-6">
+<body>
 
   <div class="max-w-md mx-auto p-6 rounded-lg shadow-md" style="background-color: #FCFBF4;">
 
-    <div class="flex items-center justify-center mb-6 gap-4">
+    <div class="header-row">
       <button onclick="history.back()" class="flex items-center text-black-600 hover:text-black-800 transition font-semibold mr-4">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
@@ -33,9 +34,6 @@
       </div>
     </div>
 
-
-
-
     <!-- YouTube 影片 -->
     <div class="aspect-video w-full max-w-3xl mx-auto mb-4">
       <iframe class="w-full h-full rounded-lg shadow"
@@ -45,7 +43,18 @@
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowfullscreen></iframe>
     </div>
+
+    <!-- 小測驗提示連結 -->
+    <div class="text-center mt-6">
+      <a href="https://devline2025.github.io/quiz/" class="quiz-link">
+        👉 點我開始小測驗，了解更多孕期補鐵知識！
+      </a>
+    </div>
+
   </div>
+
+
+
 
   <!-- ✅ 加入這一行以正確載入圖片產生程式 -->
   <script src="iron_supplement.js"></script>
