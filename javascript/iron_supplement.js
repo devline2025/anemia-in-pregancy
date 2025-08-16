@@ -1,5 +1,8 @@
-fetch("iron_supplement.json")
-  .then((res) => res.json())
+const currentPage = window.location.pathname.split("/").pop();
+const jsonFilename = currentPage.replace(".html", ".json");
+
+fetch( `../data/${jsonFilename}`)
+  .then((response) => response.json())
   .then((images) => {
     const container = document.getElementById("imageSlider");
     const dotsContainer = document.createElement("div");
