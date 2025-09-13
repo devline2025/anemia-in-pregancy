@@ -91,7 +91,10 @@
   width: 100%;
   transform: scaleX(0);
   position: absolute;
+<<<<<<< HEAD
   z-index: 990;
+=======
+>>>>>>> 8b4dd66 (add google analytics)
 }
 
 #toggler:checked ~ .menu-overlay{
